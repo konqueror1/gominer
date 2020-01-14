@@ -290,16 +290,13 @@ func (thy *Thyroid) ProgramBitstream(bitstreamFilePath string) (err error) {
 	}
 
 	thy.stats = types.Programming
-	log.Print("bit path:", bitstreamName)
-	if thy.muxNums > 1 {
-		for board := 0; board < thy.muxNums; board++ {
-			log.Printf("now programming: %d\n", board+1)
+	log.Print("Bitstream: ", path.Join(BitStreamDir, bitstreamName))
+	for board := 0; board < thy.muxNums; board++ {
+		log.Printf("Programming board number: %d\n", board+1)
+		if board > 0 {
 			boardman.SelectJTAG(uint8(board + 1))
-			time.Sleep(time.Millisecond * 10)
-			err = programBit(path.Join(BitStreamDir, bitstreamName))
 		}
-	}
-	if thy.muxNums == 1 {
+		time.Sleep(time.Millisecond * 10)
 		err = programBit(path.Join(BitStreamDir, bitstreamName))
 	}
 
