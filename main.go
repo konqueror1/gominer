@@ -88,6 +88,7 @@ func init() {
 
 	} else {
 		viper.SetConfigName(cfgname)            // name of config file (without extension)
+		viper.SetConfigType("json")             // REQUIRED if the config file does not have the extension in the name
 		viper.AddConfigPath(".")                // more path to look for the config files
 		viper.AddConfigPath("/opt/scripta/etc") // path to look for the config file in
 	}
