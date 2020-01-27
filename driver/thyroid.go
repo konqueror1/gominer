@@ -206,7 +206,7 @@ const (
 	xdacPath            = "/usr/share/openocd/scripts/fpga/xilinx-xadc.cfg"
 	adapterInit         = "adapter_khz 2500; init;"
 	BitStreamDir        = "/opt/scripta/bitstreams"
-	queryopenocdProcess = "sudo ps -aux | grep openocd | grep -v grep"
+	queryopenocdProcess = "/bin/pidof openocd"
 )
 
 func isOpenocdRunning() bool {
